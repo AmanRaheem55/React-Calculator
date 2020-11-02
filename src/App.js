@@ -4,20 +4,27 @@ import './App.css';
 function App() {
 
   const [display, setDisplay] = useState("")
+
+
   const calculat = () =>{
    const resulls = eval(display)
     setDisplay(resulls)
   }
+
+  const displayData= (data) => {
+    setDisplay(display + data)
+  }
+
   return (
     <div className="App">
         <input type="text" value={display} onChange={e => setDisplay(e.target.value)}/>
         <button onClick={e => {calculat()}}> =</button>
 
         <div class="btn-group">
-        <button  onClick={e => (setDisplay(display + e.target.value))} id="num-1" class="btn btn-light" value="1">1</button>
-        <button  onClick={e => (setDisplay(display + e.target.value))} id="num-2" class="btn btn-light" value="2">2</button>
-        <button  onClick={e => (setDisplay(display + e.target.value))} id="num-3" class="btn btn-light" value="3">3</button>
-        <button  onClick={e => (setDisplay(display + e.target.value))} id="add"   class="btn btn-light" value="+">+</button>
+        <button  onClick={e => (displayData(e.target.value))} id="num-1" class="btn btn-light" value="1">1</button>
+        <button  onClick={e => (displayData(e.target.value))} id="num-2" class="btn btn-light" value="2">2</button>
+        <button  onClick={e => (displayData(e.target.value))} id="num-3" class="btn btn-light" value="3">3</button>
+        <button  onClick={e => (displayData(e.target.value))} id="add"   class="btn btn-light" value="+">+</button>
       </div>
 
       <div class="btn-group">
