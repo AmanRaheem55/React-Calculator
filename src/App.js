@@ -6,7 +6,7 @@ function App() {
   const [display, setDisplay] = useState("");
 
   const calculate = () => {
-    let resulls  =  String(eval(display));
+    let resulls = String(eval(display));
     console.log(resulls)
     setDisplay(resulls);
   };
@@ -15,30 +15,36 @@ function App() {
     setDisplay(display + data);
   };
 
-  return (
-    <div className="App   card" >
-  
-      <div class="card-body">
-          <input
-        className="display"
-        type="text"
-        value={display}
-        onChange={(e) => setDisplay(e.target.value)}
-      />
-     
-          <KeyPad className=""
-          displayData={displayData}
-          calculate={calculate}
-        /> 
-       
-      </div>
+const clearDisplay = () => {
+  setDisplay("")
+}
 
-      {/* <input   className="" type="text" value={display} onChange={e => setDisplay(e.target.value)}/>
+const backSpace = () =>  {
+  let data = display
+    let result = data.slice(0, -1)
+      setDisplay(result)
+  
+   
+}
+  return (
+    <div className="App btn-group-vertical  " role="group"  >
+
+        <input
+          className="display text-center form-control-xl"
+          type="text"
+          value={display}
+          onChange={(e) => setDisplay(e.target.value)}
+        />
+
         <KeyPad className=""
           displayData={displayData}
           calculate={calculate}
-        /> */}
-    </div>
+          backSpace={backSpace}
+          clearDisplay={clearDisplay}
+        />
+
+      </div>
+
   );
 }
 

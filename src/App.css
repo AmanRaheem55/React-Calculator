@@ -1,25 +1,34 @@
-.App {
-  width: 18rem;
-  align-items: center;
-}
-.card {
-  margin: 0 auto; 
-  float: none; 
-  margin-bottom: 10px; 
-  background-color: black;
-  justify-content: center;
-  border: none !important;
-  margin-top: 150px;
+.btn{
+  padding: 20px;
+  font-size: large;
+   border: 2px solid #f8f9fa;
 }
 
-.display {
+
+.display{
+  background-color: #c2d4df;
   width: 100%;
-  height: 2.8rem;
-  font-size: 18px;
-  background-color: #e2f2ff;
+  height: 5rem;
+  font-size: 40px;
+    border: 10px solid #f8f9fa;
+  
+
 }
 
-.card-body {
-  border: 2px solid black;
-  background-color: #087dfb40;
+
+.App{
+  width: 18rem;
+  text-align: center;
+  padding-top: 10%;
+
+}
+.keyPad{
+   border: 10px solid #f8f9fa;
+   border-top:none ;
+
+}
+
+
+.btn-group{
+  
 }
