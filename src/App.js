@@ -1,14 +1,18 @@
 import React, { useState, } from "react";
 import KeyPad from "./Components/KeyPad";
 import "./App.css";
-
+import db from "./firebaseConfig"
+import firebase from "firebase"
 function App() {
   const [display, setDisplay] = useState("");
+
+
   
+
   const handleData = (e) => {
     const data = e.target.value
     let filteredData = data.replace(/[a-z @ ! # $  ^ & ( ) ~ ` " " : ; > <. ? |]/g, '');
-    setDisplay(filteredData)
+   setDisplay(filteredData)
  
   }
 
@@ -32,9 +36,11 @@ function App() {
     setDisplay("");
   };
 
-  const handleEvents = (event) => {
+ 
+  const handleClickEvent = (event) => {
     const { value } = event.target;
     value === "C" ? clearDisplay():value === "Ac" ? backSpace() : value === "=" ? calculate() : displayData(value);
+    console.log(event)
   };
 
   return (
@@ -46,7 +52,7 @@ function App() {
         onChange={handleData}
         onKeyPress={e => e.charCode === 13 ? calculate(): null}
       />
-      <KeyPad className="" handleEvents={handleEvents} />    
+      <KeyPad className="" handleClickEvent={handleClickEvent} />    
     </div>
   );
 }
