@@ -4,12 +4,14 @@ import "./App.css";
 
 function App() {
   const [display, setDisplay] = useState("");
-
-  const handleKeyPress = (e) => {
+  
+  const handleData = (e) => {
     const data = e.target.value
-      let filteredData = data.replace(/[a-z @ ! # $  ^ & ( ) ~ ` " " : ;]/g, '');
+    let filteredData = data.replace(/[a-z @ ! # $  ^ & ( ) ~ ` " " : ; > <. ? |]/g, '');
     setDisplay(filteredData)
+ 
   }
+
   const displayData = (data) => {
     setDisplay(display + data);
   };
@@ -30,7 +32,7 @@ function App() {
     setDisplay("");
   };
 
-  const handleClickEvent = (event) => {
+  const handleEvents = (event) => {
     const { value } = event.target;
     value === "C" ? clearDisplay():value === "Ac" ? backSpace() : value === "=" ? calculate() : displayData(value);
   };
@@ -41,9 +43,10 @@ function App() {
         className="display text-center form-control"
         type="text"
         value={display}
-        onChange={handleKeyPress}
+        onChange={handleData}
+        onKeyPress={e => e.charCode === 13 ? calculate(): null}
       />
-      <KeyPad className="" handleClickEvent={handleClickEvent} />    
+      <KeyPad className="" handleEvents={handleEvents} />    
     </div>
   );
 }
