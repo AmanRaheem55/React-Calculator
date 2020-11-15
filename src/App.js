@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import KeyPad from "./Components/KeyPad";
 import "./Assets/App.css";
 import "./firebaseConfig";
-import firebase from "firebase";
+
 
 import Display from "./Components/Display";
 function App() {
+
+  const handleKeyPress = event => {
+    const { key, } = event;
+    setDisplay(display => display + key)
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
+
   const [display, setDisplay] = useState("");
 
-  const handleData = (e) => {
-    const data = e.target.value;
-    let filteredData = data.replace(/[a-z @ ! # $  ^ & ( ) ~ ` " " : ; > <. ? |]/g,"");
-    setDisplay(filteredData);
-  };
 
   const displayData = (data) => {
     setDisplay(display + data);
@@ -33,11 +42,10 @@ function App() {
 
   const handleClickEvent = (event) => {
     const { value } = event.target;
-      value === "C"  ? clearDisplay()
-    : value === "Ac" ? backSpace()
-    : value === "="  ? calculate()
-    : displayData(value);
+    value === "C" ? clearDisplay():value === "Ac" ? backSpace() :value === "=" ? calculate():displayData(value);
   };
+
+
 
   return (
     <React.Fragment>
@@ -46,7 +54,6 @@ function App() {
         <div className="App__display">
           <Display
             className="App__textInput"
-            handleData={handleData}
             calculate={calculate}
             display={display}
           />
