@@ -1,13 +1,16 @@
-
 .keyPad{
-  width: 18rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  
+  border: 1px solid gray;
+  border-radius: 12px;
+  padding: 2px;
 }
+
+.keypad__keyRow{
+  display: flex;
+  margin: 2px;
+}
+
 .keyPad__key{
-  padding: 10px 10px;
-  font-size: 1rem;
+  width: 80px;
+  margin: 0.5px;
+  border-radius: 8px;
 }

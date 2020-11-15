@@ -1,0 +1,21 @@
+.display{
+    width: 100%;
+    display: flex;
+  
+}
+
+
+.display__textInput{
+    width:250px;
+    height: 60px;
+    margin: 10px;
+    text-align: center; 
+    margin-top: 12px;
+    background-color: #1835521c;
+    font-size: 18px;
+    font-weight:800;
+    border-radius: 8px;
+
+}
+
+
