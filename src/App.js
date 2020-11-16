@@ -41,8 +41,7 @@ function App() {
 
   const displayData = (data, keyCode) => {
     let filteredData = data.replace(
-      /[a-z A-Z @ ! # $ ^ & ( ) ~}[  ` " " : ; > <. ? |]/g,
-      ""
+      /[a-z A-Z @ ! # $ ^ & ( ) ~}[  ` " " : ; > <. ? |]/g,""
     );
     keyCode === 221 || keyCode === 220
       ? setDisplay((display) => display + "")
@@ -71,7 +70,7 @@ function App() {
           <Display 
              className="App__textInput" 
              display={display}  
-             displayData={displayData}/>
+            />
         </div>
         <KeyPad className="App__keypad" handleClickEvent={handleClickEvent} />
       </div>
