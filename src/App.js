@@ -7,21 +7,21 @@ import Display from "./Components/Display";
 function App() {
 
 
+ const [display, setDisplay] = useState("");
 
   const handleKeyPress = event => {
     console.log(event)
     const { key, keyCode } = event;
-    console.log("pressed" + keyCode)
-    let filteredData = key.replace(/[a-z @ ! # $ E B^ & ( ) ~ ` " " : ; > <. ? |]/g, "");
-    keyCode === 13 ? calculate() : displayData(filteredData)
+    console.log("KeyCode " + keyCode  +" key " + key)
+    
+   keyCode === 220 ? displayData(""): keyCode === 221 ? displayData("") :  keyCode === 13 ? calculate() : keyCode === 8 ? backSpace(): displayData(key)
   };
-  const [display, setDisplay] = useState("");
-
+ 
 
   useEffect(() => {
-    window.addEventListener('keypress', handleKeyPress);
+    window.addEventListener('keydown', handleKeyPress);
     return () => {
-      window.removeEventListener('keypress', handleKeyPress);
+      window.removeEventListener('keydown', handleKeyPress);
     };
   });
 
@@ -33,7 +33,8 @@ function App() {
 
 
   const displayData = (data) => {
-    setDisplay(display => display + data);
+    let filteredData = data.replace(/[a-z A-Z @ ! # $ ^ & ( ) ~}[  ` " " : ; > <. ? |]/g, "");
+    setDisplay(display => display + filteredData);
   };
 
 
@@ -42,7 +43,8 @@ function App() {
   const calculate = () => {
     let data = display;
     let resulls = eval(data);
-    setDisplay(resulls);
+    let newData = String(resulls)
+    setDisplay(newData);
   };
 
   const backSpace = () => {

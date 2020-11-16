@@ -1,16 +1,10 @@
 import React from "react";
-import '../Assets/Display.css'
+import "../Assets/Display.css";
 
-function Display({ display,calculate }) {
+function Display({ display }) {
   return (
     <div className="display">
-      <input
-        className="display__textInput"
-        type="text"
-        value={display} 
-       
-        onKeyPress={(e) => (e.charCode === 13 ? calculate() : null)}
-      />
+      <input className=" display__textInput" value={display} onChange={e => (console.log(e))}/>
     </div>
   );
 }
