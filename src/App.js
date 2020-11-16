@@ -14,7 +14,7 @@ function App() {
     const { key, keyCode } = event;
     console.log("KeyCode " + keyCode  +" key " + key)
     
-   keyCode === 220 ? displayData(""): keyCode === 221 ? displayData("") :  keyCode === 13 ? calculate() : keyCode === 8 ? backSpace(): displayData(key)
+  keyCode === 13 ? calculate() : keyCode === 8 ? backSpace(): displayData(key ,keyCode)
   };
  
 
@@ -32,13 +32,10 @@ function App() {
   };
 
 
-  const displayData = (data) => {
+  const displayData = (data ,keyCode) => { 
     let filteredData = data.replace(/[a-z A-Z @ ! # $ ^ & ( ) ~}[  ` " " : ; > <. ? |]/g, "");
-    setDisplay(display => display + filteredData);
+    keyCode === 221 || keyCode === 220 ? setDisplay(display => display + ""):setDisplay(display => display + filteredData);
   };
-
-
-
 
   const calculate = () => {
     let data = display;
